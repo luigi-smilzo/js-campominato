@@ -18,7 +18,7 @@ var level = prompt('Scegli il livello di difficoltà:\n- Facile\n- Normale\n- Di
            .trim()
            .toLowerCase();
 
-while (level != ('facile' && 'normale' && 'difficile') ) {
+while (level != 'facile' && level != 'normale' && level != 'difficile' ) {
     var level = prompt('Comando non valido, riprova:\n- Facile\n- Normale\n- Difficile')
                .trim()
                .toLowerCase();
