@@ -12,9 +12,32 @@ con difficoltà 0 => tra 1 e 100
 con difficoltà 1 =>  tra 1 e 80
 con difficoltà 2=> tra 1 e 50
  */
+var level = prompt('Scegli il livello di difficoltà:\n- Facile\n- Normale\n- Difficile')
+                      .trim()
+                      .toLowerCase();
 
+var difficulty;
 var bombs = [];
-randomCpu(bombs, 1, 100);
+
+switch (level) {
+    case 'facile':
+        difficulty = 100;
+        break;
+    
+    case 'normale':
+        difficulty = 80;
+        break;
+
+    case 'difficile':
+        difficulty = 50;
+        break;
+
+    default:
+        difficulty = 100;
+}
+
+randomCpu(bombs, 1, difficulty);
+console.log(bombs);
 
 
 
