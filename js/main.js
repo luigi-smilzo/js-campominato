@@ -12,12 +12,17 @@ con difficoltà 0 => tra 1 e 100
 con difficoltà 1 =>  tra 1 e 80
 con difficoltà 2=> tra 1 e 50
  */
-var level = prompt('Scegli il livello di difficoltà:\n- Facile\n- Normale\n- Difficile')
-                      .trim()
-                      .toLowerCase();
 
 var difficulty;
-var bombs = [];
+var level = prompt('Scegli il livello di difficoltà:\n- Facile\n- Normale\n- Difficile')
+           .trim()
+           .toLowerCase();
+
+while (level != ('facile' && 'normale' && 'difficile') ) {
+    var level = prompt('Comando non valido, riprova:\n- Facile\n- Normale\n- Difficile')
+               .trim()
+               .toLowerCase();
+}
 
 switch (level) {
     case 'facile':
@@ -36,17 +41,9 @@ switch (level) {
         difficulty = 100;
 }
 
+var bombs = [];
 randomCpu(bombs, 1, difficulty);
 console.log(bombs);
-
-
-
-
-
-
-
-
-
 
 
 
