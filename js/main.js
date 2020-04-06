@@ -25,10 +25,6 @@ while (level != 'facile' && level != 'normale' && level != 'difficile' ) {
 }
 
 switch (level) {
-    case 'facile':
-        difficulty = 100;
-        break;
-    
     case 'normale':
         difficulty = 80;
         break;
@@ -47,29 +43,31 @@ console.log(bombs);
 
 alert('Buona fortuna!');
 var playerInputs = [];
-var input = parseInt(prompt('Inserisci un numero'));
 
-if ( bombs.includes(input) ) {
-    console.error('You exploded, ouch!!!');
-    console.log('Your score:', playerInputs.length);
-} else if ( playerInputs.includes(input) ) {
-    var input = parseInt( prompt('Hai già inserito questo numero. Inseriscine un altro') );
+var input = parseInt( prompt('Inserisci un numero da 1 a ' + difficulty) );
+validateInput(input);
+
+
+while ( playerInputsCheck(playerInputs) ) {
+    if ( bombs.includes(input) ) {
+        console.error('Sei esploso, ouch!!!');
+        console.log('Il tuo punteggio:', playerInputs.length);
+        break
+    } else if ( playerInputs.includes(input) ) {
+        var input = parseInt( prompt('Hai già inserito questo numero. Inseriscine un altro da 1 a ' + difficulty) );
+        validateInput(input);
+    } else {
+        playerInputs.push(input);
+        var input = parseInt( prompt('Phew, non è successo niente. Continua se ne hai il coraggio. Inserisci un numero da 1 a ' + difficulty) );
+        validateInput(input);
+    }
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if ( playerInputsCheck(playerInputs) ) {
+    console.error('Sei morto, smetti di leggere');
+} else {
+    alert('Sei vivo, hai guadagnato un altro giorno della tua inutile esistenza')
+}
 
 
 /* Functions */
@@ -83,4 +81,17 @@ function randomCpu (array, min, max) {
             array.push(number);
         }
     }
+}
+
+function validateInput (input) {
+    while ( input < 1 || input > difficulty || isNaN(input) ) {
+        var input = parseInt( prompt('Inserimento non valido. Inserisci un numero da 1 a ' + difficulty) );
+    }
+}
+
+function playerInputsCheck (array) {
+    if ( array.length <= (difficulty - 16) ) {
+        return true;
+    }
+    return false;
 }
