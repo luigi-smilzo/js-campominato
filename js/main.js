@@ -45,6 +45,31 @@ var bombs = [];
 randomCpu(bombs, 1, difficulty);
 console.log(bombs);
 
+alert('Buona fortuna!');
+var playerInputs = [];
+var input = parseInt(prompt('Inserisci un numero'));
+
+if ( bombs.includes(input) ) {
+    console.error('You exploded, ouch!!!');
+    console.log('Your score:', playerInputs.length);
+} else if ( playerInputs.includes(input) ) {
+    var input = parseInt( prompt('Hai già inserito questo numero. Inseriscine un altro') );
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 /* Functions */
